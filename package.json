@@ -1,0 +1,21 @@
+{
+  "name": "table-it",
+  "version": "0.0.1",
+  "description": "",
+  "dependencies": {
+    "body-parser": "1.13.2",
+    "bootstrap": "^3.3.5",
+    "express": "4.13.1",
+    "nedb": "1.1.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/nponiros/table-it.git"
+  },
+  "author": "Nikolas Poniros",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nponiros/table-it/issues"
+  },
+  "homepage": "https://github.com/nponiros/table-it#readme"
+}
