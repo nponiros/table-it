@@ -27,17 +27,15 @@ export default function init() {
   app.use(express.static(path.join(__dirname, '../client')));
 
   let collections = getCollections();
+  let collectionNames = [];
   collections.forEach(function(collection) {
+    collectionNames.push(collection.name);
     app.use('/', getRoutes(collection));
   });
 
-// TODO: add routes here!
- /* app.get('/api/v1/cables', function(req, res) {
-      res.send({
-        headElems: ['color', 'type'],
-        rows: [{elems: ['red', 'cat6']}, {elems: ['blue', 'cat5e']}]
-      });
-  });*/
+  app.get('/api/v1/tables', function(req, res) {
+    res.send(collectionNames);
+  });
 
   // Error handler
   app.use(function(err, req, res, next) {
