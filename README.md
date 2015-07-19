@@ -5,15 +5,10 @@
 1. Find a way to add a type for each column
 2. Allow the user to add tables from the browser
 3. Edit/Delete row
-4. Safe ids for the rows
-5. Sorting/Search/Filtering
-6. Show/Hide column
-7. Build process for typescript
-8. Dynamic data path
-9. Allow the user to add a row
-10. Dynamic table selector in client
-11. Use route params in the table components to get the right data
-
+4. Sorting/Search/Filtering
+5. Show/Hide column
+6. Build process for typescript
+7. Allow the user to add a row
 
 ### Running the app
 #### Client
