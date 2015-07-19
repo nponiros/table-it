@@ -5,7 +5,8 @@ logs
 node_modules
 typings
 
-# Ignore js files in client
+# Ignore js files in client and the source maps
 client/**/*.js
+client/**/*.map
 
 .idea
