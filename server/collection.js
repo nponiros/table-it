@@ -10,8 +10,6 @@ export default class Collection {
     };
     this.datastore = new NeDBDataStore(options);
     this.name = collectionName;
-    this.save({elems: ['cat6', 'blue']});
-    this.save({elems: ['cat6', 'red']});
   }
   save(data) {
     var promise = new Promise((resolve, reject) => {
@@ -26,7 +24,6 @@ export default class Collection {
     return promise;
   }
   find(query) {
-    console.log('find');
     var promise = new Promise((resolve, reject) => {
       this.datastore.find(query, function(err, result) {
         if (err) {
