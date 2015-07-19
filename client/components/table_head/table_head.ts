@@ -3,6 +3,8 @@
 import {Component, View} from 'angular2/angular2';
 import {NgFor} from 'angular2/angular2';
 
+import {RouteParams} from 'angular2/router';
+
 import DataService from '../../services/data_service';
 
 // Annotation section
@@ -16,8 +18,8 @@ import DataService from '../../services/data_service';
 // Component controller
 export default class TableHead {
   private colNames: Array<string>;
-  constructor(dataService: DataService) {
+  constructor(dataService: DataService, routeParams: RouteParams) {
     this.colNames = [];
-    dataService.getData().subscribe(cables => this.colNames = cables.colNames);
+    dataService.getData(routeParams.get('tbl')).subscribe(cables => this.colNames = cables.colNames);
   }
 }
