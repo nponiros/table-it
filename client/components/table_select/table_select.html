@@ -1,4 +1,3 @@
 <ul>
-  <li><a (click)="navigate('cables')">Cables</a></li>
-  <li><a (click)="navigate('drinks')">Drinks</a></li>
+  <li *ng-for="#table of tables"><a class="text-capitalize" (click)="navigate(table)">{{table}}</a></li>
 </ul>
