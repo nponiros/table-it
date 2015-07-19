@@ -9,4 +9,8 @@ typings
 client/**/*.js
 client/**/*.map
 
+# Ignore the real config file
+/server.conf.js
+
+# Ignore webstorm project files
 .idea

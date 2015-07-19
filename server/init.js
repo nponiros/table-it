@@ -6,18 +6,7 @@ import util from 'util';
 import getCollections from './get_collections';
 import getRoutes from './get_routes';
 
-const PORT = 3000;
-
-/*server.configure(function() {
-  server.set('port', PORT);
-  server.set('views', __dirname + '/views');
-  server.set('view engine', 'jade');
-  server.use(express.favicon(__dirname + '/public/images/favicon.ico'));
-  server.use(express.json());
-  app.set('x-powered-by', false);
-});*/
-
-export default function init() {
+export default function init(port, tablesPath) {
   let app = express();
   app.set('x-powered-by', false);
   app.set('query parser', 'simple');
@@ -26,11 +15,11 @@ export default function init() {
   app.use('/node_modules', express.static(path.join(__dirname, '../node_modules')));
   app.use(express.static(path.join(__dirname, '../client')));
 
-  let collections = getCollections();
+  let collections = getCollections(tablesPath);
   let collectionNames = [];
   collections.forEach(function(collection) {
     collectionNames.push(collection.name);
-    app.use('/', getRoutes(collection));
+    app.use('/', getRoutes(tablesPath, collection));
   });
 
   app.get('/api/v1/tables', function(req, res) {
@@ -49,7 +38,7 @@ export default function init() {
     next(err);
   });
 
-  app.listen(PORT, function() {
-    util.log('Express server listening on port ' + PORT);
+  app.listen(port, function() {
+    util.log('Express server listening on port ' + port);
   });
 };

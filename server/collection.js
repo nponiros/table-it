@@ -1,9 +1,9 @@
-let NeDBDataStore = require('nedb');
+import NeDBDataStore from 'nedb';
+import path from 'path';
 
 export default class Collection {
-  constructor(dataPath, collectionName) {
-    // TODO: path.join
-    var filename = dataPath + '/' + collectionName + '/data.db';
+  constructor(tablesPath, collectionName) {
+    var filename = path.join(tablesPath, collectionName, 'data.db');
     var options = {
       filename: filename,
       autoload: true

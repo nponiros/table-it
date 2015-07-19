@@ -3,18 +3,15 @@ import fs from 'fs';
 
 import Collection from './collection';
 
-export default function getCollections() {
-  let dataPath = path.join(__dirname, '../data');
-
-  let dirs = fs.readdirSync(dataPath);
-
-  console.log(dirs);
+export default function getCollections(tablesPath) {
+  let dirs = fs.readdirSync(tablesPath);
 
   let collections = [];
 
   dirs.forEach(function(dir) {
-    var collection = new Collection(dataPath, dir);
+    var collection = new Collection(tablesPath, dir);
     collections.push(collection);
   });
+
   return collections;
 }
