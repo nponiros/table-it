@@ -1,10 +1,11 @@
 /// <reference path="../typings/tsd.d.ts" />
 
-import {Component, View, bootstrap} from 'angular2/angular2';
+import {Component, View, bootstrap, bind} from 'angular2/angular2';
 // TODO: examples say to use 'angular2/http' but module http is not declared in the typings
 import {httpInjectables} from 'angular2/angular2';
 
 import {routerInjectables, RouteConfig, RouterOutlet} from 'angular2/router';
+import {LocationStrategy, HashLocationStrategy, HTML5LocationStrategy} from 'angular2/router';
 
 import DataService from './services/data_service';
 
@@ -26,4 +27,4 @@ class TableItApp {
   constructor() {}
 }
 
-bootstrap(TableItApp, [httpInjectables, routerInjectables, DataService]);
+bootstrap(TableItApp, [httpInjectables, routerInjectables, DataService, bind(LocationStrategy).toClass(HashLocationStrategy)]);
