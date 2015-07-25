@@ -20,7 +20,12 @@ export default class DataService {
   }
   sendNewData(tableName, data) {
     let url = '/api/v1/' + tableName;
-    let h = new Headers({'Content-Type': 'application/json'});
-    return this.http.post(url, JSON.stringify(data), {headers: h});
+    let headerOptions = {
+      'Content-Type': 'application/json'
+    };
+    let requestOptions = {
+      headers: new Headers(headerOptions)
+    };
+    return this.http.post(url, JSON.stringify(data), requestOptions);
   }
 }
