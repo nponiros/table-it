@@ -1,0 +1,15 @@
+{
+  "version": "1.5.3",
+  "compilerOptions": {
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "target": "es5",
+    "module": "commonjs",
+    "removeComments": true
+  },
+  "fileGlobs": [
+    "!./node_modules/**",
+    "./client/**/*.ts",
+    "./typings/tsd.d.ts"
+  ]
+}

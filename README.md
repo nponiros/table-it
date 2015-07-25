@@ -13,10 +13,16 @@
 ### Running the app
 #### Client
 Install typescript with:
-npm install -g typescript@^1.5.0-beta
+npm install -g typescript
+
+Install DefinitelyTyped with:
+npm install -g tsd
+
+Install type files with:
+tsd install
 
 Then compile the code with:
-tsc -m commonjs -t es5 --emitDecoratorMetadata client/**/*.ts
+tsc
 
 #### Server
 Install babel with:
