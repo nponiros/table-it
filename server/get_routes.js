@@ -11,13 +11,20 @@ export default function getRoutes(tablesPath, collection) {
   let config = fs.readFileSync(fileName, fileReadOptions);
   let configObj = JSON.parse(config);
 
-  router.get('/api/v1/' + collection.name, function(req, res) {
+  router.get('/api/v1/' + collection.name, function(req, res, next) {
     collection.find({}).then(function(rows){
       res.send({rows: rows, colNames: configObj.colNames});
     }).catch(function(err) {
-      res.send(err);
+      next(err);
     });
   });
 
+  router.post('/api/v1/' + collection.name, function(req, res, next) {
+    collection.save(req.body).then(function() {
+      res.end();
+    }).catch(function(err) {
+      next(err);
+    });
+  });
   return router;
 }
