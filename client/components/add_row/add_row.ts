@@ -14,6 +14,7 @@ class Model {
     }, this);
   }
 }
+
 @Component({
   selector: 'add-row'
 })
@@ -30,7 +31,7 @@ export default class AddRow {
     this.colNames = [];
     this.dataService = dataService;
     this.routeParams = routeParams;
-    dataService.getData(routeParams.get('tbl')).subscribe(cables => {this.colNames = cables.colNames; this.model = new Model(this.colNames);});
+    dataService.getData(routeParams.get('tbl')).subscribe(table => {this.colNames = table.colNames; this.model = new Model(this.colNames);});
   }
   onSubmit() {
     console.log(this.model);

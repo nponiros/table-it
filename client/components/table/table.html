@@ -1,0 +1,12 @@
+<table class="table">
+  <thead>
+  <tr>
+    <th *ng-for="#name of tableData.colNames">{{name}}</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ng-for="#row of tableData.rows">
+    <th *ng-for="#rowElem of row.elems">{{rowElem}}</th>
+  </tr>
+  </tbody>
+</table>

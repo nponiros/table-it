@@ -1,10 +1,10 @@
 /// <reference path="../../../typings/tsd.d.ts" />
+/// <reference path="../../interfaces/ITableData.ts" />
 
 import {Component, View} from 'angular2/angular2';
+import {NgFor} from 'angular2/angular2';
 
-import TableBody from 'components/table_body/table_body';
-import TableHead from 'components/table_head/table_head';
-import AddRow from 'components/add_row/add_row';
+import {RouteParams} from 'angular2/router';
 
 import DataService from '../../services/data_service';
 
@@ -12,9 +12,16 @@ import DataService from '../../services/data_service';
   selector: 'table-wrapper'
 })
 @View({
-  template: `<add-row></add-row><table class="table"><thead></thead><tbody></tbody></table>`,
-  directives: [TableHead, TableBody, AddRow]
+  templateUrl: './components/table/table.html',
+  directives: [NgFor]
 })
 export default class Table {
-  constructor() {}
+  private tableData: ITableData;
+  constructor(dataService: DataService, routeParams: RouteParams) {
+    this.tableData = {
+      colNames: [],
+      rows: []
+    };
+    dataService.getData(routeParams.get('tbl')).subscribe(table => this.tableData = table);
+  }
 }

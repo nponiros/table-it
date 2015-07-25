@@ -17,7 +17,6 @@ import {Router} from 'angular2/router';
 export default class TableSelect {
   private tables: Array<string>;
   private router: Router;
-  private http: Http;
   constructor(router: Router, http: Http) {
     this.router = router;
     this.tables = [];
