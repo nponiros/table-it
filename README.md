@@ -8,7 +8,6 @@
 4. Sorting/Search/Filtering
 5. Show/Hide column
 6. Build process for typescript
-7. Allow the user to add a row
 
 ### Running the app
 #### Client

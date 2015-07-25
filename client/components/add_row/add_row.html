@@ -1,0 +1,7 @@
+<form (ng-submit)="onSubmit()">
+  <div class="form-group" *ng-for="#colName of colNames">
+    <label>{{colName}}</label>
+    <input type="text" class="form-control" [(ng-model)]="model[colName]">
+  </div>
+  <button type="submit" class="btn btn-default">Save</button>
+</form>
