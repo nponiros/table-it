@@ -4,12 +4,9 @@
 import {Component, View} from 'angular2/angular2';
 import {NgFor} from 'angular2/angular2';
 
-import {RouteParams} from 'angular2/router';
-
-import DataService from '../../services/data_service';
-
 @Component({
-  selector: 'table-wrapper'
+  selector: 'table-wrapper',
+  properties: ['tableData: table-data']
 })
 @View({
   templateUrl: './components/table/table.html',
@@ -17,11 +14,4 @@ import DataService from '../../services/data_service';
 })
 export default class Table {
   private tableData: ITableData;
-  constructor(dataService: DataService, routeParams: RouteParams) {
-    this.tableData = {
-      colNames: [],
-      rows: []
-    };
-    dataService.getData(routeParams.get('tbl')).subscribe(table => this.tableData = table);
-  }
 }
