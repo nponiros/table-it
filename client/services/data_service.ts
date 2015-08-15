@@ -12,7 +12,6 @@ export default class DataService {
   constructor(http: Http) {
     this.http = http;
   }
-  // TODO this gets called twice, needs optimizing
   getData (tableName) {
     let url = '/api/v1/' + tableName;
     return this.http.request(url).toRx().map(res => res.json());
