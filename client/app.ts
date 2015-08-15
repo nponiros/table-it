@@ -9,6 +9,7 @@ import {routerInjectables} from 'angular2/router';
 import {LocationStrategy, HashLocationStrategy} from 'angular2/router';
 
 import DataService from './services/data_service';
+import TableDataService from './services/table_data_service';
 import TableItApp from './components/table_it_app/table_it_app';
 
-bootstrap(TableItApp, [httpInjectables, routerInjectables, DataService, bind(LocationStrategy).toClass(HashLocationStrategy)]);
+bootstrap(TableItApp, [httpInjectables, routerInjectables, DataService, bind(LocationStrategy).toClass(HashLocationStrategy), TableDataService]);

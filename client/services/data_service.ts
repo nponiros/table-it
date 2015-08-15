@@ -4,13 +4,12 @@
 import {Http, Request, Headers} from 'angular2/angular2';
 
 // TODO: examples say to use 'angular2/di' but module di is not declared in the typings
-import {Inject} from 'angular2/angular2';
+import {Injectable} from 'angular2/angular2';
 
-import {RouteParams} from 'angular2/router';
-
+@Injectable()
 export default class DataService {
   private http: Http;
-  constructor(@Inject(Http) http: Http) { // TODO: just using typescript type definition does not seem to be enough to properly inject a service into an other service
+  constructor(http: Http) {
     this.http = http;
   }
   // TODO this gets called twice, needs optimizing
@@ -26,6 +25,6 @@ export default class DataService {
     let requestOptions = {
       headers: new Headers(headerOptions)
     };
-    return this.http.post(url, JSON.stringify(data), requestOptions);
+    return this.http.post(url, JSON.stringify(data), requestOptions).toRx();
   }
 }
