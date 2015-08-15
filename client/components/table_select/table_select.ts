@@ -2,10 +2,9 @@
 
 import {Component, View, NgFor} from 'angular2/angular2';
 
-// TODO: examples say to use 'angular2/http' but module http is not declared in the typings
-import {Http} from 'angular2/angular2';
-
 import {Router} from 'angular2/router';
+
+import DataService from '../../services/data_service';
 
 @Component({
   selector: 'table-select'
@@ -17,10 +16,10 @@ import {Router} from 'angular2/router';
 export default class TableSelect {
   private tables: Array<string>;
   private router: Router;
-  constructor(router: Router, http: Http) {
+  constructor(router: Router, dataService: DataService) {
     this.router = router;
     this.tables = [];
-    http.get('/api/v1/tables').toRx().map(res => res.json()).subscribe(tables => this.tables = tables)
+    dataService.getData('tables').subscribe((tables) => this.tables = tables)
   }
   navigate (whichTable) {
     this.router.navigate('/table/' + whichTable);
