@@ -1,6 +1,6 @@
 /// <reference path="../../../typings/tsd.d.ts" />
 
-import {Component, View, NgFor, EventEmitter, formDirectives} from 'angular2/angular2';
+import {Component, View, NgFor, EventEmitter, FORM_DIRECTIVES} from 'angular2/angular2';
 
 @Component({
   selector: 'add-row',
@@ -9,7 +9,7 @@ import {Component, View, NgFor, EventEmitter, formDirectives} from 'angular2/ang
 })
 @View({
   templateUrl: './components/add_row/add_row.html',
-  directives: [formDirectives, NgFor]
+  directives: [FORM_DIRECTIVES, NgFor]
 })
 export default class AddRow {
   private colNames: Array<string>;

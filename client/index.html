@@ -3,9 +3,11 @@
   <title>table-it</title>
   <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
   <script src="https://github.jspm.io/jmcriffey/bower-traceur-runtime@0.0.87/traceur-runtime.js"></script>
-  <script src="https://jspm.io/system@0.16.js"></script>
-  <script src="https://code.angularjs.org/2.0.0-alpha.34/angular2.dev.js"></script>
-  <script src="https://code.angularjs.org/2.0.0-alpha.34/router.dev.js"></script>
+  <script src="node_modules/systemjs/dist/system.src.js"></script>
+  <script src="node_modules/angular2/bundles/angular2.dev.js"></script>
+  <script src="node_modules/angular2/bundles/http.dev.js"></script>
+  <script src="node_modules/angular2/bundles/router.dev.js"></script>
+
 </head>
 <body>
 <div class="container">
@@ -14,6 +16,19 @@
   </div>
   <table-it-app></table-it-app>
 </div>
-<script>System.import('app');</script>
+<script>
+  // add .js for files under src as we can not include .js in the import because typescript does not understand it
+  System.config({
+    packages: {
+      '/services': {
+        defaultExtension: 'js'
+      },
+      '/components': {
+        defaultExtension: 'js'
+      }
+    }
+  });
+  System.import('app.js');
+</script>
 </body>
 </html>

@@ -1,15 +1,11 @@
 /// <reference path="../../typings/tsd.d.ts" />
 
-// TODO: examples say to use 'angular2/http' but module http is not declared in the typings
-import {Http, Request, Headers} from 'angular2/angular2';
+import {Http, Request, Headers} from 'angular2/http';
+import {Inject} from 'angular2/angular2';
 
-// TODO: examples say to use 'angular2/di' but module di is not declared in the typings
-import {Injectable} from 'angular2/angular2';
-
-@Injectable()
 export default class DataService {
   private http: Http;
-  constructor(http: Http) {
+  constructor(@Inject(Http) http: Http) {
     this.http = http;
   }
   getData (tableName) {
