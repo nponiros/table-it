@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/nponiros/table-it/issues"
   },
-  "homepage": "https://github.com/nponiros/table-it#readme"
+  "homepage": "https://github.com/nponiros/table-it#readme",
+  "scripts": {
+    "lint": "eslint -c eslint.yaml ./server/"
+  }
 }
