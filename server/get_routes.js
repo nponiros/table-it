@@ -11,7 +11,7 @@ export default function getRoutes(tablesPath, collection) {
   const config = fs.readFileSync(fileName, fileReadOptions);
   const configObj = JSON.parse(config);
 
-  router.get('/api/v1/' + collection.name, (req, res, next) => {
+  router.get(`/api/v1/${collection.name}`, (req, res, next) => {
     collection.find({}).then((rows) => {
       res.send({
         rows, colNames: configObj.colNames
@@ -21,7 +21,7 @@ export default function getRoutes(tablesPath, collection) {
     });
   });
 
-  router.post('/api/v1/' + collection.name, (req, res, next) => {
+  router.post(`/api/v1/${collection.name}`, (req, res, next) => {
     collection.save(req.body).then(() => {
       res.end();
     }).catch((err) => {
@@ -29,7 +29,7 @@ export default function getRoutes(tablesPath, collection) {
     });
   });
 
-  router.delete('/api/v1/' + collection.name + '/:id', (req, res, next) => {
+  router.delete(`/api/v1/${collection.name}/:id`, (req, res, next) => {
     collection.remove(req.params.id).then(() => {
       res.end();
     }).catch((err) => {

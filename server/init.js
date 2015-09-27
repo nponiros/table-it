@@ -40,6 +40,6 @@ export default function init(port, tablesPath) {
   });
 
   app.listen(port, function() {
-    util.log('Express server listening on port ' + port);
+    util.log(`Express server listening on port ${port}`);
   });
 }
