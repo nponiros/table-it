@@ -22,6 +22,6 @@
   },
   "homepage": "https://github.com/nponiros/table-it#readme",
   "scripts": {
-    "lint": "eslint -c eslint.yaml ./server/"
+    "lint": "tslint -c tslint.json ./client/components/**/*.ts ./client/services/*.ts ./client/interfaces/*.ts && eslint -c eslint.yaml ./server/"
   }
 }

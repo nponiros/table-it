@@ -1,29 +1,31 @@
 /// <reference path="../../typings/tsd.d.ts" />
 
-import {Http, Request, Headers} from 'angular2/http';
+import {Http, Headers} from 'angular2/http';
 import {Inject} from 'angular2/angular2';
 
-export default class DataService {
+class DataService {
   private http: Http;
   constructor(@Inject(Http) http: Http) {
     this.http = http;
   }
   getData (tableName) {
-    let url = '/api/v1/' + tableName;
+    const url = `/api/v1/${tableName}`;
     return this.http.request(url).toRx().map(res => res.json());
   }
   sendNewData(tableName, data) {
-    let url = '/api/v1/' + tableName;
-    let headerOptions = {
+    const url = `/api/v1/${tableName}`;
+    const headerOptions = {
       'Content-Type': 'application/json'
     };
-    let requestOptions = {
+    const requestOptions = {
       headers: new Headers(headerOptions)
     };
     return this.http.post(url, JSON.stringify(data), requestOptions).toRx();
   }
   removeData(tableName, id) {
-    let url = '/api/v1/' + tableName + '/' + id;
+    let url = `/api/v1/${tableName}/${id}`;
     return this.http.delete(url).toRx();
   }
 }
+
+export default DataService;

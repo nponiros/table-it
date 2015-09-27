@@ -11,19 +11,23 @@ import {Component, View, NgFor, EventEmitter, FORM_DIRECTIVES} from 'angular2/an
   templateUrl: './components/add_row/add_row.html',
   directives: [FORM_DIRECTIVES, NgFor]
 })
-export default class AddRow {
+class AddRow {
+  add = new EventEmitter();
   private colNames: Array<string>;
   private row;
-  add = new EventEmitter();
   constructor() {
     this.row = {};
   }
 
   onSubmit() {
-    let dataToSend = {elems: []};
-    this.colNames.forEach(function (colName) {
-      dataToSend.elems.push(this.row[colName]);
-    }, this);
+    const dataToSend = {
+      elems: []
+    };
+    dataToSend.elems = this.colNames.map((colName) => {
+      return this.row[colName];
+    });
     this.add.next(dataToSend);
   }
 }
+
+export default AddRow;

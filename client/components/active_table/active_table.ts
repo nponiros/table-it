@@ -1,7 +1,6 @@
 /// <reference path="../../../typings/tsd.d.ts" />
 
 import {Component, View} from 'angular2/angular2';
-import {NgFor} from 'angular2/angular2';
 
 import {RouteParams} from 'angular2/router';
 
@@ -10,7 +9,6 @@ import AddRow from '../add_row/add_row';
 
 import TableDataService from '../../services/table_data_service';
 
-// TODO: Careful it seems that you have to use $event to get data with custom events
 @Component({
   selector: 'active-table'
 })
@@ -20,7 +18,7 @@ import TableDataService from '../../services/table_data_service';
   <table-wrapper [table-data]="tableData" (remove)="removeRow($event)"></table-wrapper>`,
   directives: [AddRow, Table]
 })
-export default class ActiveTable {
+class ActiveTable {
   private tableData: ITableData;
   private tableName: string;
   private tableDataService: TableDataService;
@@ -36,3 +34,5 @@ export default class ActiveTable {
     this.tableDataService.removeRow(this.tableName, rowId);
   }
 }
+
+export default ActiveTable;

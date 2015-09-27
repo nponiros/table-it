@@ -18,4 +18,6 @@ import ActiveTable from '../active_table/active_table';
   template: `<router-outlet></router-outlet>`,
   directives: [RouterOutlet]
 })
-export default class TableItApp {}
+class TableItApp {}
+
+export default TableItApp;

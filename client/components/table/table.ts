@@ -13,10 +13,11 @@ import {NgFor} from 'angular2/angular2';
   templateUrl: './components/table/table.html',
   directives: [NgFor]
 })
-export default class Table {
+class Table {
   remove = new EventEmitter();
-  private tableData: ITableData;
   removeRow(rowId) {
     this.remove.next(rowId);
   }
 }
+
+export default Table;
