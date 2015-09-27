@@ -24,7 +24,10 @@ class AddRow {
       elems: []
     };
     dataToSend.elems = this.colNames.map((colName) => {
-      return this.row[colName];
+      const text = this.row[colName];
+      // reset form
+      this.row[colName] = '';
+      return text;
     });
     this.add.next(dataToSend);
   }
