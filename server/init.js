@@ -13,6 +13,7 @@ export default function init(port, tablesPath) {
   app.use(bodyParser.json());
 
   app.use('/node_modules', express.static(path.join(__dirname, '../node_modules')));
+  app.use('/libs', express.static(path.join(__dirname, '../libs')));
   app.use(express.static(path.join(__dirname, '../client')));
 
   let collections = getCollections(tablesPath);

@@ -35,4 +35,17 @@ export default class Collection {
     });
     return promise;
   }
+  remove(id) {
+    const query = {_id: id};
+    var promise = new Promise((resolve, reject) => {
+      this.datastore.remove(query, function(err, result) {
+        if(err) {
+          reject(err);
+        } else {
+          resolve(result);
+        }
+      });
+    });
+    return promise;
+  }
 }

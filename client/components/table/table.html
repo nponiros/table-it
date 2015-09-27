@@ -7,6 +7,7 @@
   <tbody>
   <tr *ng-for="#row of tableData.rows">
     <th *ng-for="#rowElem of row.elems">{{rowElem}}</th>
+    <th (click)="removeRow(row._id)">Remove</th>
   </tr>
   </tbody>
 </table>

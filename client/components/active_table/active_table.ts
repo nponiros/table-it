@@ -17,7 +17,7 @@ import TableDataService from '../../services/table_data_service';
 @View({
   template: `
   <add-row [col-names]="tableData.colNames" (add)="addRow($event)"></add-row>
-  <table-wrapper [table-data]="tableData"></table-wrapper>`,
+  <table-wrapper [table-data]="tableData" (remove)="removeRow($event)"></table-wrapper>`,
   directives: [AddRow, Table]
 })
 export default class ActiveTable {
@@ -31,5 +31,8 @@ export default class ActiveTable {
   }
   addRow(row) {
     this.tableDataService.addNew(this.tableName, row);
+  }
+  removeRow(rowId) {
+    this.tableDataService.removeRow(this.tableName, rowId);
   }
 }

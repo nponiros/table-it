@@ -22,4 +22,8 @@ export default class DataService {
     };
     return this.http.post(url, JSON.stringify(data), requestOptions).toRx();
   }
+  removeData(tableName, id) {
+    let url = '/api/v1/' + tableName + '/' + id;
+    return this.http.delete(url).toRx();
+  }
 }

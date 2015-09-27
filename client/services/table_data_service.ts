@@ -31,4 +31,13 @@ export default class TableDataService {
       this.tableData.rows.push(row);
     });
   }
+
+  removeRow(tableName, rowId) {
+    this.dataService.removeData(tableName, rowId).subscribe(() => {
+      const index = this.tableData.rows.findIndex((row) => {
+        return row._id === rowId;
+      });
+      this.tableData.rows.splice(index, 1);
+    });
+  }
 }

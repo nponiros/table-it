@@ -26,5 +26,13 @@ export default function getRoutes(tablesPath, collection) {
       next(err);
     });
   });
+
+  router.delete('/api/v1/' + collection.name + '/:id', function(req, res, next) {
+    collection.remove(req.params.id).then(() => {
+      res.end();
+    }).catch((err) => {
+      next(err);
+    });
+  });
   return router;
 }
