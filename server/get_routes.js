@@ -3,31 +3,33 @@ import fs from 'fs';
 import path from 'path';
 
 export default function getRoutes(tablesPath, collection) {
-  let router = express.Router();
+  const router = express.Router(); // eslint-disable-line new-cap
   const fileName = path.join(tablesPath, collection.name, 'config.json');
   const fileReadOptions = {
     enc: 'utf8'
   };
-  let config = fs.readFileSync(fileName, fileReadOptions);
-  let configObj = JSON.parse(config);
+  const config = fs.readFileSync(fileName, fileReadOptions);
+  const configObj = JSON.parse(config);
 
-  router.get('/api/v1/' + collection.name, function(req, res, next) {
-    collection.find({}).then(function(rows){
-      res.send({rows: rows, colNames: configObj.colNames});
-    }).catch(function(err) {
+  router.get('/api/v1/' + collection.name, (req, res, next) => {
+    collection.find({}).then((rows) => {
+      res.send({
+        rows, colNames: configObj.colNames
+      });
+    }).catch((err) => {
       next(err);
     });
   });
 
-  router.post('/api/v1/' + collection.name, function(req, res, next) {
-    collection.save(req.body).then(function() {
+  router.post('/api/v1/' + collection.name, (req, res, next) => {
+    collection.save(req.body).then(() => {
       res.end();
-    }).catch(function(err) {
+    }).catch((err) => {
       next(err);
     });
   });
 
-  router.delete('/api/v1/' + collection.name + '/:id', function(req, res, next) {
+  router.delete('/api/v1/' + collection.name + '/:id', (req, res, next) => {
     collection.remove(req.params.id).then(() => {
       res.end();
     }).catch((err) => {

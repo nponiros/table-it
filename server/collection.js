@@ -3,17 +3,17 @@ import path from 'path';
 
 export default class Collection {
   constructor(tablesPath, collectionName) {
-    var filename = path.join(tablesPath, collectionName, 'data.db');
-    var options = {
-      filename: filename,
+    const filename = path.join(tablesPath, collectionName, 'data.db');
+    const options = {
+      filename,
       autoload: true
     };
     this.datastore = new NeDBDataStore(options);
     this.name = collectionName;
   }
   save(data) {
-    var promise = new Promise((resolve, reject) => {
-      this.datastore.insert(data, function(err) {
+    const promise = new Promise((resolve, reject) => {
+      this.datastore.insert(data, (err) => {
         if (err) {
           reject(err);
         } else {
@@ -24,8 +24,8 @@ export default class Collection {
     return promise;
   }
   find(query) {
-    var promise = new Promise((resolve, reject) => {
-      this.datastore.find(query, function(err, result) {
+    const promise = new Promise((resolve, reject) => {
+      this.datastore.find(query, (err, result) => {
         if (err) {
           reject(err);
         } else {
@@ -36,10 +36,12 @@ export default class Collection {
     return promise;
   }
   remove(id) {
-    const query = {_id: id};
-    var promise = new Promise((resolve, reject) => {
-      this.datastore.remove(query, function(err, result) {
-        if(err) {
+    const query = {
+      _id: id
+    };
+    const promise = new Promise((resolve, reject) => {
+      this.datastore.remove(query, (err, result) => {
+        if (err) {
           reject(err);
         } else {
           resolve(result);
