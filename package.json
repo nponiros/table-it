@@ -9,6 +9,12 @@
     "nedb": "1.1.2",
     "angular2": "2.0.0-alpha.37",
     "systemjs": "0.19.3",
+    "babel": "5.8.23"
+  },
+  "devDependencies": {
+    "eslint": "1.5.1",
+    "tsd": "0.6.4",
+    "tslint": "2.5.0",
     "typescript": "1.6.2"
   },
   "repository": {
@@ -22,6 +28,9 @@
   },
   "homepage": "https://github.com/nponiros/table-it#readme",
   "scripts": {
-    "lint": "tslint -c tslint.json ./client/components/**/*.ts ./client/services/*.ts ./client/interfaces/*.ts && eslint -c eslint.yaml ./server/"
+    "postinstall": "npm run build",
+    "build": "tsd install && tsc --module 'commonjs' --target 'es5' --emitDecoratorMetadata --experimentalDecorators --sourceMap --removeComments ./client/app.ts || exit 0",
+    "lint": "tslint -c tslint.json ./client/components/**/*.ts ./client/services/*.ts ./client/interfaces/*.ts && eslint -c eslint.yaml ./server/",
+    "start": "babel-node server/app.js"
   }
 }
